@@ -18,24 +18,26 @@ namespace Talabat.APIs.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly IAuthService authService;
-        private readonly IGenericRepository<Address> addressRepository;
+        //private readonly IGenericRepository<Address> addressRepository;
         private readonly IMapper mapper;
-
+        private readonly IUnitOfWork unitOfWork;
         public AccountController
                     (
                         UserManager<ApplicationUser> _userManager,
                         SignInManager<ApplicationUser> _signInManager,
                         IAuthService _authService,
-                        IGenericRepository<Address> AddressRepository,
-                        IMapper Mapper
+                       // IGenericRepository<Address> AddressRepository,
+                        IMapper Mapper,
+                        IUnitOfWork _unitOfWork
 
                     )
         {
             userManager = _userManager;
             signInManager = _signInManager;
             authService = _authService;
-            addressRepository = AddressRepository;
+           // addressRepository = AddressRepository;
             mapper = Mapper;
+            unitOfWork = _unitOfWork;
         }
 
         // Login

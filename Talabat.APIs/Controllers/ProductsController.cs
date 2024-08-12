@@ -37,6 +37,7 @@ namespace Talabat.APIs.Controllers
 
         // Get All Products
         [Authorize]
+        [CacheAttribute(600)]
         [HttpGet]
         [ProducesResponseType(typeof(Pagination<ProductToReturnDTO>), StatusCodes.Status200OK)]
         public async Task<ActionResult<Pagination<ProductToReturnDTO>>> GetProducts([FromQuery] ProductSpecParams productSpecParams)

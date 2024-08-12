@@ -9,6 +9,7 @@ using Talabat.Core.Service.Contract;
 using Talabat.Repository;
 using Talabat.Repository.BasketRepository;
 using Talabat.Service.AuthToken;
+using Talabat.Service.CachingService;
 using Talabat.Service.OrderServiceModule;
 using Talabat.Service.PaymentService;
 
@@ -21,6 +22,7 @@ namespace Talabat.APIs.Extensions
             // services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped(typeof(IOrderService), typeof(OrderService));
             services.AddScoped(typeof(IPaymentService), typeof(PaymentService));
+            services.AddSingleton(typeof(IResponseCacheService), typeof(ResponseCacheService));
 
             services.AddAutoMapper(typeof(MappingProfiles));
 
@@ -44,7 +46,7 @@ namespace Talabat.APIs.Extensions
                  };
              });
 
-         
+
             services.AddScoped(typeof(IBasketRepository), typeof(BasketRepository));
             services.AddScoped(typeof(IAuthService), typeof(AuthService));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
